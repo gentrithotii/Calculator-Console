@@ -1,17 +1,57 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner userInput = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        calculator(userInput);
+
+    }
+
+
+    public static void calculator(Scanner sc) {
+        System.out.print("Enter the calculation formula: ");
+        String userStringInput = sc.nextLine().replaceAll("\\s", "");
+
+        // Validate input
+        if (!userStringInput.matches("\\d+[-+*/]\\d+")) {
+            System.out.println("Invalid input! Enter in format: {number}{operator}{number}");
+            return;
         }
+
+        // Split numbers and operand
+        String[] arrayInput = userStringInput.split("([-+*/])");
+        String operand = userStringInput.replaceAll("[0-9]", "");
+
+        int num1 = Integer.parseInt(arrayInput[0]);
+        int num2 = Integer.parseInt(arrayInput[1]);
+        int sum = 0;
+
+        switch (operand) {
+            case "-":
+                sum += num1 - num2;
+                break;
+
+            case "+":
+                sum += num1 + num2;
+                break;
+            case "*":
+                sum += num1 * num2;
+                break;
+            case "/":
+                if (num1 == 0 || num2 == 0) {
+                    System.out.println("Cant divide with 0 !");
+                    return;
+                }
+                sum += num1 / num2;
+                break;
+            default:
+                System.out.println("Wrong input");
+        }
+        System.out.println(num1 + " " + operand + " " + num2 + " = " + sum);
     }
 }
+
+
