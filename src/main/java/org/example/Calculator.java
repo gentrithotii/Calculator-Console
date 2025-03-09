@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    public int[] arrayStringToInt(String[] stringInputArray) {
+    private int[] arrayStringToInt(String[] stringInputArray) {
         int[] numArray = new int[stringInputArray.length];
 
         for (int i = 0; i < stringInputArray.length; i++) {
