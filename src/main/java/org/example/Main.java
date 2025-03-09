@@ -62,13 +62,15 @@ public class Main {
 
     public static void calculator(Scanner sc) {
         System.out.print("Enter the calculation formula (Example  3+5-2*4): ");
-        String userStringInput = sc.nextLine().replaceAll("\\s", "");
+        String userStringInput = sc.nextLine();
 
         // Validate input
-        if (!userStringInput.matches("\\d+([-+*/]\\d+)*")) {
+        if (!userStringInput.matches("^\\d+(\\s*[-+*/]\\s*\\d+)*$")) {
             System.out.println("Invalid input! Enter in format: {number}{operator}{number}");
             return;
         }
+
+        userStringInput = userStringInput.replaceAll("\\s", "");
 
         // Get number and operator
         String[] numberStrings = userStringInput.split("[-+*/]");
