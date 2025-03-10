@@ -2,9 +2,9 @@ package org.example;
 
 import java.util.Scanner;
 
-public class Calculator {
+public class Calculator implements CalculatorInterface {
 
-    private int[] arrayStringToInt(String[] stringInputArray) {
+    public int[] arrayStringToInt(String[] stringInputArray) {
         int[] numArray = new int[stringInputArray.length];
 
         for (int i = 0; i < stringInputArray.length; i++) {
@@ -58,19 +58,19 @@ public class Calculator {
         System.out.println(result == (int) result ? "Result: " + (int) result : "Result: " + result);
     }
 
-    private double addition(double num1, double num2) {
+    public double addition(double num1, double num2) {
         return num1 + num2;
     }
 
-    private double subtraction(double num1, double num2) {
+    public double subtraction(double num1, double num2) {
         return num1 - num2;
     }
 
-    private double multiplier(double num1, double num2) {
+    public double multiplier(double num1, double num2) {
         return num1 * num2;
     }
 
-    private double divider(double num1, double num2) {
+    public double divider(double num1, double num2) {
         if (num2 == 0) {
             System.out.println("Can not divide by 0");
             return 0;
